@@ -1,0 +1,1 @@
+make ur masto account have a random name
