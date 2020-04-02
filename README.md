@@ -6,6 +6,12 @@ yeah, just gives ur masto account a random display name, that's it
 
 rn stands for "random name" because i'm incredibly creative
 
+# prerequisites
+
+- curl
+- jq
+- bash
+
 # how
 
 1. update the settings in `config.example.sh` to reflect ur instance/access token and the file to get names from
