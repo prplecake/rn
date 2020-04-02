@@ -4,6 +4,8 @@ make ur masto account have a random name
 
 yeah, just gives ur masto account a random display name, that's it
 
+rn stands for "random name" because i'm incredibly creative
+
 # how
 
 1. update the settings in `config.example.sh` to reflect ur instance/access token and the file to get names from
