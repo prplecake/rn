@@ -14,11 +14,21 @@ get_curr_name() {
 }
 
 update_name() {
-  curl -s \
+  RESP=`curl -s \
     -H "$AUTH_HEADER" \
     -X PATCH \
     -d display_name="$1" \
-    "$INSTANCE_URL/$API_ROOT/accounts/update_credentials" > /dev/null
+    "$INSTANCE_URL/$API_ROOT/accounts/update_credentials"`
+  
+  ERR=$(echo $RESP | jq -r .error)
+
+  if [ "$ERR" != "null" ]; then
+    echo "Error setting display name."
+    echo $RESP | jq -r .error
+    exit 1
+  else 
+    echo "Successfully updated display name."
+  fi
 }
 
 while getopts 'd' OPTION; do
