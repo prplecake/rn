@@ -9,8 +9,8 @@ DRY_RUN=0
 get_curr_name() {
   curl -s \
     -H "$AUTH_HEADER" \
-    "$INSTANCE_URL/$API_ROOT/accounts/verify_credentials" |
-    jq -r .display_name
+    "$INSTANCE_URL/$API_ROOT/accounts/verify_credentials"
+  | jq -r .display_name
 }
 
 update_name() {
