@@ -41,11 +41,7 @@ done
 shift "$(($OPTIND -1))"
 
 CURR_NAME=$(get_curr_name)
-NEW_NAME=$(shuf -n 1 "$NAME_FILE")
-
-while [ "$NEW_NAME" = "$CURR_NAME" ]; do
-  NEW_NAME=$(shuf -n 1 "$NAME_FILE")
-done
+NEW_NAME=$(grep -v "$CURR_NAME" "$NAME_FILE" | shuf -n 1)
 
 echo New name: $NEW_NAME
 
