@@ -43,11 +43,14 @@ while getopts 'd' OPTION; do
 done
 shift "$(($OPTIND -1))"
 
+# Get the current name, and the new name by filtering the current name out of
+# the list of possible names.
 CURR_NAME=$(get_curr_name)
 NEW_NAME=$(grep -v "$CURR_NAME" "$NAME_FILE" | shuf -n 1)
 
 echo New name: $NEW_NAME
 
+# If we're during a dry run, just quit here, otherwise actually do the updating.
 if [ "$DRY_RUN" -eq 1 ]; then
   echo "Dry run, exiting."
   exit 0
