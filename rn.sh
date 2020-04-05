@@ -6,13 +6,15 @@ API_ROOT="api/v1"
 AUTH_HEADER="Authorization: Bearer $ACCESS_TOKEN"
 DRY_RUN=0
 
+# Return the user's current display name
 get_curr_name() {
   curl -s \
     -H "$AUTH_HEADER" \
-    "$INSTANCE_URL/$API_ROOT/accounts/verify_credentials"
+    "$INSTANCE_URL/$API_ROOT/accounts/verify_credentials" \
   | jq -r .display_name
 }
 
+# Updates the user's display name
 update_name() {
   RESP=`curl -s \
     -H "$AUTH_HEADER" \
@@ -22,6 +24,7 @@ update_name() {
   
   ERR=$(echo $RESP | jq -r .error)
 
+  # An error would generally happen if the display name is too long.
   if [ "$ERR" != "null" ]; then
     echo "Error setting display name."
     echo $RESP | jq -r .error
