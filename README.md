@@ -8,6 +8,7 @@ rn stands for "random name" because i'm incredibly creative
 
 # prerequisites
 
+- coreutils
 - curl
 - jq
 - bash
